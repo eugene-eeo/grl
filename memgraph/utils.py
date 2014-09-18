@@ -10,3 +10,11 @@ def proximity(distance, start):
         for dy in range(height):
             y = min_y + dy
             yield x, y
+
+
+def diagonal(distance, start, gradient):
+    sx, sy = start
+    for dx in range(distance):
+        x = sx + dx
+        y = sy + (dx * gradient)
+        yield x, y

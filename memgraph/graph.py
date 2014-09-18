@@ -31,7 +31,7 @@ class Graph(object):
     def __iter__(self):
         for x in self.board:
             for y in self.board[x]:
-                yield (x, y)
+                yield x, y
 
     def filter(self, function):
         for x, y in self:
