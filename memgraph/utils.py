@@ -23,11 +23,11 @@ def diagonal(distance, start, gradient):
 def diamond_proximity(distance, start):
     sx, sy = start
     height = 1 + (2 * distance)
-    mid_height = distance + 1
 
     min_x = sx - distance
     min_y = sy - distance
 
+    mid_height = distance + 1
     cx = min_x + (mid_height - 1)
 
     blocks = 1
