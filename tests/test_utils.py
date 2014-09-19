@@ -1,4 +1,4 @@
-from memgraph.utils import proximity, diagonal, diamond_proximity
+from memgraph.utils import proximity, diagonal, diamond_proximity, distance
 
 
 def test_proximity():
@@ -29,3 +29,7 @@ def test_diamond_proximity():
         (1, 0),
         (0, 1),
     ])
+
+
+def test_distance():
+    assert distance((0,0), (3,4)) == 5

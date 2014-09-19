@@ -1,3 +1,6 @@
+from math import sqrt
+
+
 def proximity(distance, start):
     sx, sy = start
     height = width = 1 + (2 * distance)
@@ -43,3 +46,9 @@ def diamond_proximity(distance, start):
             blocks -= 1
             continue
         blocks += 1
+
+
+def distance(p1, p2):
+    x1, y1 = p1
+    x2, y2 = p2
+    return sqrt((x1 - x2)**2 + (y1 - y2)**2)
