@@ -52,3 +52,7 @@ class Graph(object):
             if length > max_y:
                 max_y = length
         return max_x * max_y
+
+    def values_of(self, iterable):
+        for x, y in iterable:
+            yield self[x,y]
