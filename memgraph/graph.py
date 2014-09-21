@@ -35,7 +35,7 @@ class Graph(object):
 
     def filter(self, function):
         for x, y in self:
-            if function(self[x,y]):
+            if function(self[x, y]):
                 yield x, y
 
     def search(self, value):
@@ -55,4 +55,4 @@ class Graph(object):
 
     def values_of(self, iterable):
         for x, y in iterable:
-            yield self[x,y]
+            yield self[x, y]
