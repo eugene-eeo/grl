@@ -33,6 +33,10 @@ class Graph(object):
             for y in self.board[x]:
                 yield x, y
 
+    def values(self):
+        for x, y in self:
+            yield self[x, y]
+
     def filter(self, function):
         for x, y in self:
             if function(self[x, y]):
