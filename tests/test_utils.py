@@ -33,3 +33,4 @@ def test_diamond_proximity():
 
 def test_distance():
     assert distance((0,0), (3,4)) == 5
+    assert distance((0,0), (0,0)) == 0

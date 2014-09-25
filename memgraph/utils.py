@@ -46,6 +46,8 @@ def diamond_proximity(distance, start):
 
 
 def distance(p1, p2):
+    if p1 == p2:
+        return 0.0
     x1, y1 = p1
     x2, y2 = p2
     return sqrt(pow(x1 - x2, 2) +
