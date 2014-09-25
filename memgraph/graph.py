@@ -52,9 +52,7 @@ class Graph(object):
         for column in self.board.values():
             if not column:
                 continue
-            length = max(column)
-            if length > max_y:
-                max_y = length
+            max_y = max(max_y, max(column))
         return max_x * max_y
 
     def values_of(self, iterable):
