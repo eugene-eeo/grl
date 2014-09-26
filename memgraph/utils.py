@@ -30,6 +30,7 @@ def diamond_proximity(distance, start):
     min_x = sx - distance
     min_y = sy - distance
 
+    subtract = False
     blocks = 1
     for dy in range(height):
         y = min_y + dy
@@ -39,7 +40,8 @@ def diamond_proximity(distance, start):
             yield (sx + delta), y
             yield (sx - delta), y
 
-        if dy >= distance:
+        if subtract or dy >= distance:
+            subtract = True
             blocks -= 1
             continue
         blocks += 1
