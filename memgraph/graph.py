@@ -30,8 +30,8 @@ class Graph(object):
         del self.board[x][y]
 
     def __iter__(self):
-        for x in self.board:
-            for y in self.board[x]:
+        for x in sorted(self.board):
+            for y in sorted(self.board[x]):
                 yield x, y
 
     def values(self):
