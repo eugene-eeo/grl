@@ -34,13 +34,13 @@ class Graph(object):
                 yield x, y
 
     def values(self):
-        for x, y in self:
-            yield self[x, y]
+        for t in self:
+            yield self[t]
 
     def filter(self, function):
-        for x, y in self:
-            if function(self[x, y]):
-                yield x, y
+        for t in self:
+            if function(self[t]):
+                yield t
 
     def search(self, value):
         return self.filter(partial(eq, value))
@@ -56,5 +56,5 @@ class Graph(object):
         return max_x * max_y
 
     def values_of(self, iterable):
-        for x, y in iterable:
-            yield self[x, y]
+        for t in iterable:
+            yield self[t]
