@@ -1,6 +1,7 @@
-from operator import eq
-from functools import partial
 from collections import defaultdict
+from functools import partial
+from operator import eq
+from memgraph.view import View
 
 
 def default_null():
@@ -58,3 +59,10 @@ class Graph(object):
     def values_of(self, iterable):
         for t in iterable:
             yield self[t]
+
+    @property
+    def view(self):
+        class ViewBuilder(object):
+            def __getitem__(ins, slices):
+                return View(self, slices)
+        return ViewBuilder()
