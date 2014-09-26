@@ -50,7 +50,8 @@ class View(object):
         self.graph[self.relative_point(coordinate)] = value
 
     def __iter__(self):
-        for x in slicerange(self.graph.board, self.sx):
-            y_axis = self.graph.board[x]
+        board = self.graph.board
+        for x in slicerange(sorted(board), self.sx):
+            y_axis = sorted(board[x])
             for y in slicerange(y_axis, self.sy):
                 yield x, y
