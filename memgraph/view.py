@@ -1,21 +1,25 @@
 from collections import namedtuple
-from itertools import islice
+from itertools import islice, count
 
 
 Point = namedtuple('Point', ('x', 'y'))
 
 
 def slicerange(iterable, sl):
-    lower = sl.start or 0
-    step = sl.step or 1
-    stop = sl.stop
-    check_stop = stop is not None
-    for item in iterable:
-        if lower <= item:
-            if check_stop and item > stop:
-                continue
-            if not item % step:
-                yield item
+    if not iterable:
+        return
+    it = islice(
+        count(sl.start or 0),
+        sl.start,
+        sl.stop,
+        sl.step,
+    )
+    maxvalue = max(iterable)
+    for item in it:
+        if item in iterable:
+            yield item
+        if item >= maxvalue:
+            return
 
 
 class View(object):
@@ -59,7 +63,7 @@ class View(object):
 
     def __iter__(self):
         board = self.board
-        for x in slicerange(sorted(board), self.sx):
+        for x in slicerange(board, self.sx):
             y_axis = sorted(board[x])
             for y in slicerange(y_axis, self.sy):
                 yield x, y

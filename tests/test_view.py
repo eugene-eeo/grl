@@ -27,3 +27,13 @@ def test_view_range(graph):
     graph[5,6] = 2
 
     assert not list(view.values())
+
+
+def test_view_slice_step(graph):
+    view = graph.view[::2, :]
+    graph[0,1] = 1
+    graph[1,1] = 2
+    graph[2,1] = 3
+
+    assert list(view.values()) == [1,3]
+    assert list(view) == [(0,1), (2,1)]
