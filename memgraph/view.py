@@ -24,6 +24,10 @@ class View(object):
         self.sx, self.sy = slices
 
     @property
+    def board(self):
+        return self.graph.board
+
+    @property
     def relative_delta(self):
         return Point(
             x=self.sx.start or 0,
@@ -54,7 +58,7 @@ class View(object):
         self.graph[self.relative_point(coordinate)] = value
 
     def __iter__(self):
-        board = self.graph.board
+        board = self.board
         for x in slicerange(sorted(board), self.sx):
             y_axis = sorted(board[x])
             for y in slicerange(y_axis, self.sy):
