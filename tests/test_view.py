@@ -19,3 +19,11 @@ def test_view_items(graph):
 
     assert not graph[1,0]
     assert not graph[4,3]
+
+
+def test_view_range(graph):
+    view = graph.view[1:, 0:3]
+    graph[5,5] = 1
+    graph[5,6] = 2
+
+    assert not list(view.values())

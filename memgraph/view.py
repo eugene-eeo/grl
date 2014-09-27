@@ -7,13 +7,15 @@ Point = namedtuple('Point', ('x', 'y'))
 
 def slicerange(iterable, sl):
     lower = sl.start or 0
-    upper = sl.stop or 0
     step = sl.step or 1
+    stop = sl.stop
+    check_stop = stop is not None
     for item in iterable:
-        if lower <= item <= upper:
-            if item % step:
+        if lower <= item:
+            if check_stop and item > stop:
                 continue
-            yield item
+            if not item % step:
+                yield item
 
 
 class View(object):
@@ -57,3 +59,7 @@ class View(object):
             y_axis = sorted(board[x])
             for y in slicerange(y_axis, self.sy):
                 yield x, y
+
+    def values(self):
+        for coordinate in self:
+            yield self[coordinate]

@@ -56,10 +56,6 @@ class Graph(object):
             max_y = max(max_y, max(column))
         return max_x * max_y
 
-    def values_of(self, iterable):
-        for t in iterable:
-            yield self[t]
-
     @property
     def view(self):
         class ViewBuilder(object):

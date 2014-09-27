@@ -32,11 +32,6 @@ def test_size(graph):
     assert graph.size == 20
 
 
-def test_values_of(graph):
-    graph[0,1] = 0
-    assert list(graph.values_of([(0,1)])) == [0]
-
-
 def test_values(graph):
     for i in range(3):
         graph[0,i] = i
