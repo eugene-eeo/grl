@@ -6,12 +6,14 @@ Point = namedtuple('Point', ('x', 'y'))
 
 
 def slicerange(iterable, sl):
-    return islice(
-        iterable,
-        sl.start,
-        sl.stop,
-        sl.step,
-    )
+    lower = sl.start or 0
+    upper = sl.stop or 0
+    step = sl.step or 1
+    for item in iterable:
+        if lower <= item <= upper:
+            if item % step:
+                continue
+            yield item
 
 
 class View(object):
