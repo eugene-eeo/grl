@@ -5,8 +5,8 @@ from itertools import islice, count
 Point = namedtuple('Point', ('x', 'y'))
 
 
-def slicerange(iterable, sl):
-    if not iterable:
+def slicerange(values, sl):
+    if not values:
         return
     it = islice(
         count(sl.start or 0),
@@ -14,9 +14,9 @@ def slicerange(iterable, sl):
         sl.stop,
         sl.step,
     )
-    maxvalue = max(iterable)
+    maxvalue = max(values)
     for item in it:
-        if item in iterable:
+        if item in values:
             yield item
         if item >= maxvalue:
             return
