@@ -64,7 +64,7 @@ class View(object):
     def __iter__(self):
         board = self.board
         for x in slicerange(board, self.sx):
-            y_axis = sorted(board[x])
+            y_axis = board[x]
             for y in slicerange(y_axis, self.sy):
                 yield x, y
 

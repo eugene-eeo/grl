@@ -13,8 +13,9 @@ def test_view_items(graph):
 
     assert graph[1,0] == view[0,0] == 1
     assert graph[4,3] == view[3,3] == 2
+    assert graph[1] == view[0]
 
-    del view[0,0]
+    del view[0]
     del view[3,3]
 
     assert not graph[1,0]

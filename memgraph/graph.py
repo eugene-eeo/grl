@@ -51,9 +51,8 @@ class Graph(object):
         max_x = max(self.board)
         max_y = 0
         for column in self.board.values():
-            if not column:
-                continue
-            max_y = max(max_y, max(column))
+            if column:
+                max_y = max(max_y, max(column))
         return max_x * max_y
 
     @property
