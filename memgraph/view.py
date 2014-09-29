@@ -44,16 +44,14 @@ class View(object):
         if isinstance(coordinate, int):
             x = coordinate + self.relative_delta.x
             return self.graph[x]
-        t = self.relative_point(coordinate)
-        return self.graph[t]
+        return self.graph[self.relative_point(coordinate)]
 
     def __delitem__(self, coordinate):
         if isinstance(coordinate, int):
             x = coordinate + self.relative_delta.x
             del self.graph[x]
             return
-        t = self.relative_point(coordinate)
-        del self.graph[t]
+        del self.graph[self.relative_point(coordinate)]
 
     def __setitem__(self, coordinate, value):
         self.graph[self.relative_point(coordinate)] = value
