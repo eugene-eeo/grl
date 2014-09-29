@@ -26,17 +26,14 @@ class View(object):
     def __init__(self, graph, slices):
         self.graph = graph
         self.sx, self.sy = slices
+        self.relative_delta = Point(
+            x=self.sx.start or 0,
+            y=self.sy.start or 0,
+        )
 
     @property
     def board(self):
         return self.graph.board
-
-    @property
-    def relative_delta(self):
-        return Point(
-            x=self.sx.start or 0,
-            y=self.sy.start or 0,
-        )
 
     def relative_point(self, coordinate):
         x, y = coordinate
