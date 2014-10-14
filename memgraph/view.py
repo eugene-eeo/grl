@@ -37,8 +37,8 @@ class View(object):
 
     def relative_point(self, coordinate):
         x, y = coordinate
-        delta = self.relative_delta
-        return (x + delta.x), (y + delta.y)
+        dx, dy = self.relative_delta
+        return (x + dx), (y + dy)
 
     def __getitem__(self, coordinate):
         if isinstance(coordinate, int):
