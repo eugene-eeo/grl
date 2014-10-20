@@ -34,6 +34,10 @@ class Graph(object):
             for y in sorted(self.board[x]):
                 yield x, y
 
+    def __contains__(self, coordinate):
+        x, y = coordinate
+        return x in self.board and y in self.board[x]
+
     def values(self):
         for t in self:
             yield self[t]
