@@ -26,7 +26,7 @@ class View(object):
     def __init__(self, graph, slices):
         self.graph = graph
         self.sx, self.sy = slices
-        self.relative_delta = Point(
+        self.delta = Point(
             x=self.sx.start or 0,
             y=self.sy.start or 0,
         )
@@ -37,18 +37,18 @@ class View(object):
 
     def relative_point(self, coordinate):
         x, y = coordinate
-        dx, dy = self.relative_delta
+        dx, dy = self.delta
         return (x + dx), (y + dy)
 
     def __getitem__(self, coordinate):
         if isinstance(coordinate, int):
-            x = coordinate + self.relative_delta.x
+            x = coordinate + self.delta.x
             return self.graph[x]
         return self.graph[self.relative_point(coordinate)]
 
     def __delitem__(self, coordinate):
         if isinstance(coordinate, int):
-            x = coordinate + self.relative_delta.x
+            x = coordinate + self.delta.x
             del self.graph[x]
             return
         del self.graph[self.relative_point(coordinate)]
