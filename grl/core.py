@@ -33,3 +33,7 @@ def distance(p1, p2):
     x2, y2 = p2
     return sqrt((x1 - x2)**2 +
                 (y1 - y2)**2)
+
+
+def perpendicular(gradient):
+    return -1.0 / gradient

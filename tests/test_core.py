@@ -1,4 +1,5 @@
-from grl.core import boundaries, cycle, diagonal, distance
+from grl.core import (boundaries, cycle, diagonal, distance,
+                      perpendicular)
 
 
 origin = (0, 0)
@@ -25,3 +26,8 @@ def test_distance():
     assert distance(origin, origin) == 0
     assert distance(origin, (3, 4)) == 5
     assert distance(origin, (-1,0)) == 1
+
+
+def test_perpendicular():
+    assert perpendicular(1.0) == -1.0
+    assert perpendicular(0.5) == -2.0
