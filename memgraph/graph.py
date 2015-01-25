@@ -12,21 +12,21 @@ class Graph(object):
     def __init__(self, null=default_null):
         self.board = defaultdict(lambda: defaultdict(null))
 
-    def __getitem__(self, coordinate):
-        if isinstance(coordinate, int):
-            return self.board[coordinate]
-        x, y = coordinate
+    def __getitem__(self, point):
+        if isinstance(point, int):
+            return self.board[point]
+        x, y = point
         return self.board[x][y]
 
-    def __setitem__(self, coordinate, value):
-        x, y = coordinate
+    def __setitem__(self, point, value):
+        x, y = point
         self.board[x][y] = value
 
-    def __delitem__(self, coordinate):
-        if isinstance(coordinate, int):
-            del self.board[coordinate]
+    def __delitem__(self, point):
+        if isinstance(point, int):
+            del self.board[point]
             return
-        x, y = coordinate
+        x, y = point
         del self.board[x][y]
 
     def __iter__(self):
@@ -34,8 +34,8 @@ class Graph(object):
             for y in sorted(self.board[x]):
                 yield x, y
 
-    def __contains__(self, coordinate):
-        x, y = coordinate
+    def __contains__(self, point):
+        x, y = point
         return x in self.board and y in self.board[x]
 
     def values(self):
