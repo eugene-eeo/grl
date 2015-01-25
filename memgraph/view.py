@@ -35,7 +35,7 @@ class View(object):
     def board(self):
         return self.graph.board
 
-    def relative_point(self, coordinate):
+    def relative(self, coordinate):
         x, y = coordinate
         dx, dy = self.delta
         return (x + dx), (y + dy)
@@ -44,17 +44,17 @@ class View(object):
         if isinstance(coordinate, int):
             x = coordinate + self.delta.x
             return self.graph[x]
-        return self.graph[self.relative_point(coordinate)]
+        return self.graph[self.relative(coordinate)]
 
     def __delitem__(self, coordinate):
         if isinstance(coordinate, int):
             x = coordinate + self.delta.x
             del self.graph[x]
             return
-        del self.graph[self.relative_point(coordinate)]
+        del self.graph[self.relative(coordinate)]
 
     def __setitem__(self, coordinate, value):
-        self.graph[self.relative_point(coordinate)] = value
+        self.graph[self.relative(coordinate)] = value
 
     def __iter__(self):
         board = self.board
