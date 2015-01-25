@@ -54,9 +54,8 @@ class Graph(object):
     def size(self):
         max_x = max(self.board)
         max_y = 0
-        for column in self.board.values():
-            if column:
-                max_y = max(max_y, max(column))
+        for x in self.board:
+            max_y = max(max_y, max(self.board[x]))
         return max_x * max_y
 
     @property
