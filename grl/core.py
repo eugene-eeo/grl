@@ -19,10 +19,10 @@ def cycle(dist):
 
 
 def diagonal(distance, start, gradient):
-    sx, sy = start
-    for dx in range(distance):
-        x = sx + dx
-        y = sy + (dx * gradient)
+    x, y = start
+    for _ in range(distance):
+        x += 1
+        y += gradient
         yield x, y
 
 
