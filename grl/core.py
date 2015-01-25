@@ -2,9 +2,9 @@ from math import sqrt
 
 
 def boundaries(dist, start):
-    sx, sy = start
-    return (sx - dist, sx + dist,
-            sy - dist, sy + dist)
+    x, y = start
+    return (x - dist, x + dist,
+            y - dist, y + dist)
 
 
 def cycle(dist):
