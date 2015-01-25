@@ -24,3 +24,4 @@ def test_diagonal():
 def test_distance():
     assert distance(origin, origin) == 0
     assert distance(origin, (3, 4)) == 5
+    assert distance(origin, (-1,0)) == 1
