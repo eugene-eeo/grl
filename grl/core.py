@@ -18,9 +18,9 @@ def cycle(dist):
         yield blocks
 
 
-def diagonal(distance, start, gradient):
+def diagonal(dist, start, gradient):
     x, y = start
-    for _ in range(distance):
+    for _ in range(dist):
         x += 1
         y += gradient
         yield x, y
