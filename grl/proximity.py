@@ -1,9 +1,9 @@
 from grl.core import boundaries, cycle
 
 
-def within_proximity(point, dist, start):
+def within(point, dist, of):
     sx, sy = point
-    x0, x1, y0, y1 = boundaries(dist, start)
+    x0, x1, y0, y1 = boundaries(dist, of)
     return (x0 <= sx <= x1 and
             y0 <= sy <= y1)
 
