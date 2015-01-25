@@ -1,38 +1,27 @@
-from grl.core import boundaries
+from grl.core import boundaries, cycle
 
 
-def within_proximity(point, distance, start):
+def within_proximity(point, dist, start):
     sx, sy = start
-    bx, by = boundaries(distance, start)
-    return (bx[0] <= sx <= bx[1] and
-            by[0] <= sy <= by[1])
+    x0, x1, y0, y1 = boundaries(dist, start)
+    return (x0 <= sx <= x1 and
+            y0 <= sy <= y1)
 
 
 
-def proximity(distance, start):
-    bx, by = boundaries(distance, start)
-    y0, y1 = by
-
-    for x in range(bx[0], bx[1]+1):
+def proximity(dist, start):
+    x0, x1, y0, y1 = boundaries(dist, start)
+    for x in range(x0, x1+1):
         for y in range(y0, y1+1):
             yield x, y
 
 
-def diamond_proximity(distance, start):
+def diamond_proximity(dist, start):
     sx, sy = start
-    height = 1 + (2 * distance)
-    min_y = sy - distance
+    _, _, y0, y1 = boundaries(dist, start)
 
-    blocks = 1
-    for dy in range(height):
-        y = min_y + dy
+    for blocks, y in zip(cycle(dist), range(y0, y1+1)):
+        for dx in range(1, blocks+1):
+            yield sx+dx, y
+            yield sx-dx, y
         yield sx, y
-
-        for delta in range(1, blocks):
-            yield (sx + delta), y
-            yield (sx - delta), y
-
-        if dy >= distance:
-            blocks -= 1
-            continue
-        blocks += 1

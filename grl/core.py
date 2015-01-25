@@ -1,15 +1,21 @@
 from math import sqrt
 
 
-def boundaries(distance, start):
+def boundaries(dist, start):
     sx, sy = start
-    min_x = sx - distance
-    max_x = sx + distance
+    return (sx - dist, sx + dist,
+            sy - dist, sy + dist)
 
-    min_y = sy - distance
-    max_y = sy + distance
 
-    return (min_x, max_x), (min_y, max_y)
+def cycle(dist):
+    blocks = 0
+    for _ in range(dist):
+        yield blocks
+        blocks += 1
+    yield blocks
+    for _ in range(dist):
+        blocks -= 1
+        yield blocks
 
 
 def diagonal(distance, start, gradient):
