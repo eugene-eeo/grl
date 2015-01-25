@@ -1,1 +1,2 @@
-from grl.core import proximity, distance
+from grl.core import distance
+from grl.proximity import proximity
