@@ -10,8 +10,9 @@ def within(point, dist, of):
 
 def proximity(dist, start):
     x0, x1, y0, y1 = boundaries(dist, start)
-    for x in range(x0, x1+1):
-        for y in range(y0, y1+1):
+    max_width = x1 + 1
+    for y in range(y0, y1+1):
+        for x in range(x0, max_width):
             yield x, y
 
 
